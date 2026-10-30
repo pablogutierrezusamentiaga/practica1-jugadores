@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Racing de Santander · Plantilla</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="indicador" class="indicador" role="status" aria-live="polite" hidden>
+    Cargando…
+  </div>
+
+  <header class="cabecera">
+    <h1>Racing de Santander</h1>
+    <nav aria-label="Principal">
+      <a href="#formulario">Nuevo jugador</a>
+      <a href="#plantilla">Plantilla</a>
+      <a href="#estadisticas">Estadísticas</a>
+    </nav>
+  </header>
+
+  <main class="contenido">
+    <section id="formulario" class="tarjeta">
+      <h2 id="titulo-formulario">Nuevo jugador</h2>
+      <form id="form-jugador" novalidate>
+        <input type="hidden" id="jugador-id">
+
+        <div class="campo">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" autocomplete="off" maxlength="80">
+          <p class="error-campo" id="error-nombre" role="alert"></p>
+        </div>
+
+        <div class="campo">
+          <label for="goles">Goles (0 a 100)</label>
+          <input type="number" id="goles" min="0" max="100" step="1" value="0">
+          <p class="error-campo" id="error-goles" role="alert"></p>
+        </div>
+
+        <div class="campo">
+          <label for="posicion">Posición</label>
+          <select id="posicion">
+            <option value="">Elige una posición</option>
+            <option value="portero">Portero</option>
+            <option value="defensa">Defensa</option>
+            <option value="centrocampista">Centrocampista</option>
+            <option value="delantero">Delantero</option>
+          </select>
+          <p class="error-campo" id="error-posicion" role="alert"></p>
+        </div>
+
+        <div class="campo campo-check">
+          <input type="checkbox" id="titular">
+          <label for="titular">Es titular</label>
+          <p class="error-campo" id="error-titular" role="alert"></p>
+        </div>
+
+        <p class="mensaje-error" id="error-formulario" role="alert" hidden></p>
+
+        <div class="acciones">
+          <button type="submit" id="boton-guardar" class="boton">Guardar</button>
+          <button type="button" id="boton-cancelar" class="boton boton-secundario" hidden>Cancelar</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="plantilla" class="tarjeta">
+      <h2>Plantilla</h2>
+
+      <form id="form-filtros" class="filtros" aria-label="Filtros de la plantilla">
+        <label>Buscar
+          <input type="search" name="search" placeholder="Nombre del jugador">
+        </label>
+        <label>Titular
+          <select name="titular">
+            <option value="">Todos</option>
+            <option value="true">Titulares</option>
+            <option value="false">Suplentes</option>
+          </select>
+        </label>
+        <label>Posición
+          <select name="posicion">
+            <option value="">Todas</option>
+            <option value="portero">Portero</option>
+            <option value="defensa">Defensa</option>
+            <option value="centrocampista">Centrocampista</option>
+            <option value="delantero">Delantero</option>
+          </select>
+        </label>
+        <label>Ordenar por
+          <select name="sort">
+            <option value="">Sin orden</option>
+            <option value="nombre">Nombre</option>
+            <option value="goles">Goles</option>
+          </select>
+        </label>
+        <label>Sentido
+          <select name="order">
+            <option value="asc">Ascendente</option>
+            <option value="desc">Descendente</option>
+          </select>
+        </label>
+        <label>Por página
+          <select name="limit">
+            <option value="5">5</option>
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+            <option value="50">50</option>
+          </select>
+        </label>
+      </form>
+
+      <p class="mensaje-error" id="mensaje-error" role="alert" hidden></p>
+      <p class="vacio" id="lista-vacia" hidden></p>
+
+      <div class="tabla-contenedor" id="tabla-contenedor">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Nombre</th>
+              <th scope="col">Posición</th>
+              <th scope="col">Goles</th>
+              <th scope="col">Titular</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla"></tbody>
+        </table>
+      </div>
+
+      <div class="paginacion">
+        <button type="button" id="pagina-anterior" class="boton boton-secundario">Anterior</button>
+        <span id="info-pagina" aria-live="polite"></span>
+        <button type="button" id="pagina-siguiente" class="boton boton-secundario">Siguiente</button>
+      </div>
+    </section>
+
+    <section id="estadisticas" class="tarjeta">
+      <h2>Estadísticas</h2>
+      <div class="datos" id="stats"></div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p>&copy; 2026 Racing de Santander · Práctica 1</p>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
