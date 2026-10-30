@@ -1,0 +1,14 @@
+{
+  "name": "practica1-jugadores",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Práctica 1 — Foundations API (jugadores del Racing)",
+  "main": "src/server.js",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
